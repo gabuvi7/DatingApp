@@ -1,12 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
         <a class="navbar-brand" href="#">Dating App</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarGOU7"
-            aria-controls="navbarGOU7" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" (click)="toggleNavbar()" type="button" data-toggle="collapse"
+            data-target="#navbarGOU7" aria-controls="navbarGOU7" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarGOU7">
+        <div class="collapse navbar-collapse" [ngClass]="{show: navbarOpen}" id="navbarGOU7">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item ">
                     <a class="nav-link" href="#">Matches</a>
@@ -21,7 +21,7 @@
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="text" placeholder="Username">
                 <input class="form-control mr-sm-2" type="password" placeholder="Password">
-                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Login</button>
+                <button class="btn btn-outline-success my-2 my-sm-0" style="color: white;" type="submit">Login</button>
             </form>
         </div>
     </div>
