@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
-        <a class="navbar-brand" href="#">Dating App</a>
+        <a class="navbar-brand" [routerLink]="['/']">Dating App</a>
         <button class="navbar-toggler" (click)="toggleNavbar()" type="button" data-toggle="collapse"
             data-target="#navbarGOU7" aria-controls="navbarGOU7" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -9,13 +9,13 @@
         <div class="collapse navbar-collapse" [ngClass]="{'show': navbarOpen}"  id="navbarGOU7">
             <ul class="navbar-nav mr-auto" *ngIf="accountService.currentUser$ | async">
                 <li class="nav-item ">
-                    <a class="nav-link" href="#">Matches</a>
+                    <a class="nav-link" routerLinkActive="router-link-active"  [routerLink]="['/members']">Matches</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">List</a>
+                    <a class="nav-link" [routerLink]="['/lists']" >List</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Messages</a>
+                    <a class="nav-link" [routerLink]="['/messages']">Messages</a>
                 </li>
             </ul>
             <div class="dropdown" *ngIf="accountService.currentUser$ | async" dropdown>
