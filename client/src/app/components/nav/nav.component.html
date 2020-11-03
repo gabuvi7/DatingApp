@@ -6,21 +6,24 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" [ngClass]="{'show': navbarOpen}"  id="navbarGOU7">
-            <ul class="navbar-nav mr-auto" *ngIf="accountService.currentUser$ | async">
-                <li class="nav-item ">
-                    <a class="nav-link" routerLinkActive="router-link-active"  [routerLink]="['/members']">Matches</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/lists']" >List</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/messages']">Messages</a>
-                </li>
+        <div class="collapse navbar-collapse" [ngClass]="{'show': navbarOpen}" id="navbarGOU7">
+            <ul class="navbar-nav mr-auto">
+                <ng-container *ngIf="accountService.currentUser$ | async">
+                    <li class="nav-item ">
+                        <a class="nav-link" routerLinkActive="router-link-active"
+                            [routerLink]="['/members']">Matches</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/lists']">List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/messages']">Messages</a>
+                    </li>
+                </ng-container>
             </ul>
-            <div class="dropdown" *ngIf="accountService.currentUser$ | async" dropdown>
+            <div class="dropdown" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
                 <a class="dropdown-toggle text-light" style="cursor: pointer;" dropdownToggle>Welcome
-                    {{model.username}}</a>
+                    {{user.username | titlecase}}</a>
                 <div class="dropdown-menu mt-3" *dropdownMenu>
                     <a class="dropdown-item">Edit Profile</a>
                     <div class="dropdown-divider"></div>
