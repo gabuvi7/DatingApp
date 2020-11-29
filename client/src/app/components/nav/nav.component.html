@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand" [routerLink]="['/']">Dating App</a>
+        <button class="navbar-toggler" (click)="toggleNavbar()" type="button" data-toggle="collapse"
+            data-target="#navbarGOU7" aria-controls="navbarGOU7" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" [ngClass]="{'show': navbarOpen}" id="navbarGOU7">
+            <ul class="navbar-nav mr-auto">
+                <ng-container *ngIf="accountService.currentUser$ | async">
+                    <li class="nav-item ">
+                        <a class="nav-link" routerLinkActive="router-link-active"
+                            [routerLink]="['/members']">Matches</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/lists']">List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/messages']">Messages</a>
+                    </li>
+                </ng-container>
+            </ul>
+            <div class="dropdown" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
+                <a class="dropdown-toggle text-light" style="cursor: pointer;" dropdownToggle>Welcome
+                    {{user.username | titlecase}}</a>
+                <div class="dropdown-menu mt-3" *dropdownMenu>
+                    <a class="dropdown-item">Edit Profile</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" (click)="logout()">Logout</a>
+                </div>
+            </div>
+            <div class="justify-content-end">
+                <form *ngIf="(accountService.currentUser$ | async) === null" #loginForm="ngForm"
+                    class="form-inline my-2 my-lg-0 my-md-0" (ngSubmit)="login()" autocomplete="off">
+                    <input name="username" [(ngModel)]="model.username" class="form-control mr-sm-2" type="text"
+                        placeholder="Username">
+                    <input name="password" [(ngModel)]="model.password" class="form-control mr-sm-2" type="password"
+                        placeholder="Password">
+                    <button class="btn btn-outline-success my-2 my-sm-0" style="color: white;"
+                        type="submit">Login</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</nav>
