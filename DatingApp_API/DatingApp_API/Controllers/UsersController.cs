@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace DatingApp_API.Controllers
 {
+    [Authorize]
     public class UsersController : BaseApiController
     {
         private readonly DataContext _dataContext;
@@ -19,13 +20,11 @@ namespace DatingApp_API.Controllers
         }
 
         [HttpGet]
-        [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
         {
             return await _dataContext.Users.ToListAsync();
         }
 
-        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<AppUser>> GetUserByID(int id)
         {
